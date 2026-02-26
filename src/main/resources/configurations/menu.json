@@ -1,0 +1,77 @@
+{
+	"children":[
+		{
+			"name": "Webmaster",
+			"icon":"ic:twotone-manage-accounts",
+			"children":[
+				{
+					"id": "/dg/webmaster-roles",
+					"name": "Roles",
+					"access": ["webmaster.roles.write"]
+				},
+				{
+					"id": "/dg/webmaster-c2users",
+					"name": "Usuarios",
+					"access": ["webmaster.users.write"]
+				}
+				
+			]
+		},
+		{
+			"name": "Administración",
+			"icon":"ic:twotone-computer",
+			"children":[
+				{
+					"id": "/dg/admin-sites",
+					"name": "Ubicaciones",
+					"access": ["admin.sites.read", "admin.sites.write"]
+				}
+			]
+		},
+		{
+			"name": "Materiales",
+			"icon": "ic:twotone-shopify",
+			"children":[
+				{
+					"id": "/dg/materials-categories",
+					"name": "Categorías",
+					"access": ["materiales.admin.read", "materiales.admin.write"]
+				},
+				{
+					"id": "/dg/materials-materials",
+					"name": "Catálogo de materiales",
+					"access": ["materiales.admin.read", "materiales.admin.write"]
+				},
+				{
+					"id": "/dg/materials-approve",
+					"name": "Aprobar materiales",
+					"access": ["materiales.approve.write"]
+				},
+				{
+					"id": "/materials-shop",
+					"name": "Tienda",
+					"access": ["materiales.shop.write"]
+				},
+				{
+					"id": "/dg/materials-orders-mine",
+					"name": "Mis pedidos",
+					"access": ["materiales.shop.write"]
+				},
+				{
+					"id": "/dg/materials-orders-processing",
+					"name": "Procesamiento de pedidos",
+					"access": ["materiales.order.processing.write"]
+				},
+				{
+					"id": "/dg/materials-orders-all",
+					"name": "Administración de pedidos",
+					"access": ["materiales.orders.admin.write"]
+				}
+			]
+		}
+	]
+	
+	
+	
+	
+}

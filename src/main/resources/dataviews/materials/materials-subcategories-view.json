@@ -1,0 +1,27 @@
+{
+	"id": "materials-subcategories",
+	"table": "c2_materials_subcategories",
+	"displayName": "Categorías",
+	"readAccess": "materiales.admin.read",
+	"writeAccess": "materiales.admin.write",
+	"fields": [
+		{
+			"id": "id",
+			"displayName": "Id"
+		},
+		{
+			"id": "name",
+			"displayName": "Nombre",
+			"searchable": true
+		},
+		{
+			"id": "category",
+			"type": "reference",
+			"searchable": true,
+			"referenceId": "materials-subcategories"
+		}
+	]
+}
+
+
+

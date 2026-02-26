@@ -1,0 +1,25 @@
+{
+	"id": "webmaster-roles-reference",
+	"readAccess": "all",
+	"table": "c2_roles",
+	"displayName": "Rol",
+	"identifier": "name",
+	"fields": [
+		{
+			"id": "id",
+			"listDisplay": "hidden",
+			"displayName": "Id",
+			"readOnly": true
+		},
+		{
+			"id": "name",
+			"displayName": "Nombre",
+			"searchable": true,
+			"required": true,
+			"maxLength": 128
+		}
+	]
+}
+
+
+

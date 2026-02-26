@@ -1,0 +1,153 @@
+{
+	"id": "materials-orders-all",
+	"displayName": "Pedido",
+	"readAccess": "materiales.orders.admin.write",
+	"writeAccess": "materiales.orders.admin.write",
+	"table": "c2_materials_orders",
+	"identifier": "id",
+		"fields": [
+			{
+				"id": "id",
+				"displayName": "Nº de pedido",
+				"searchable": true
+			},
+			{
+				"id": "state",
+				"displayName": "Estado",
+				"searchable": true,
+				"values":{
+					"STARTED": "Empezado",
+					"PENDING": "Pendiente",
+					"PREPARED": "Preparado",
+					"SENT": "Enviado",
+					"REQUESTED": "Pedido a proveedor",
+					"REASSIGNED": "Reasignado a otro pedido",
+					"RECIEVED": "Recibido"
+				}
+			},
+			{
+				"id": "urgent",
+				"displayName": "Urgente",
+				"type": "bool"
+			},
+			{
+				"id": "site",
+				"type": "reference",
+				"referenceId": "admin-all-sites",
+				"listDisplay": "hidden",
+				"displayName": "Ubicación",
+				"referenceDisplayName": ["name"],
+				"required": true
+			},
+			{
+				"id": "siteInfo",
+				"displayName": "Ubicación",
+				"listDisplay": "hidden lg:table-cell",
+				"parentReference": "site",
+				"childReference": "id",
+				"type": "object",
+				"table": "c2_sites",
+				"fields": [
+					{
+						"id": "name"
+					}
+				]
+			},
+			{
+				"id": "user",
+				"type": "reference",
+				"referenceId": "users-reference",
+				"listDisplay": "hidden",
+				"displayName": "Usuario",
+				"referenceDisplayName": ["name", "lastname"],
+				"required": true
+			},
+			{
+				"id": "userInfo",
+				"displayName": "Usuario",
+				"listDisplay": "hidden lg:table-cell",
+				"parentReference": "user",
+				"childReference": "id",
+				"type": "object",
+				"table": "c2_user",
+				"fields": [
+					{
+						"id": "name"
+					},
+					{
+						"id": "lastname"
+					}
+				]
+			},
+			{
+				"id": "cost",
+				"type": "number",
+				"displayName": "Coste",
+				"required": true
+			},
+			{
+				"id": "lines",
+				"type": "list",
+				"listDisplay": "hidden",
+				"displayName": "Líneas",
+				"table": "c2_materials_orders_lines",
+				"parentReference": "id",
+				"childReference": "parent",
+				"fields": [
+					{
+						"id": "id",
+						"displayName": "Id"
+					},
+					{
+						"id": "parent",
+						"formDisplay":"hidden"
+					},
+					{
+						"id": "material",
+						"type": "reference",
+						"referenceId": "materials-materials",
+						"displayName": "Material",
+						"required": true
+					},
+					{
+						"id": "quantity",
+						"type": "number",
+						"displayName": "Cantidad",
+						"required": true
+					},
+					{
+						"id": "urgent",
+						"displayName": "Urgente",
+						"type" : "bool"
+					},
+					{
+						"id": "state",
+						"displayName": "Estado",
+						"values":{
+							"STARTED": "Empezado",
+							"PREPARED": "Preparado",
+							"POSTPONED": "Postpuesto",
+							"REQUESTED": "Pedido a proveedor"
+						}
+						
+					},
+					{
+						"id": "uuid",
+						"displayName": "UUID",
+						"required": true
+					}
+				]
+			},
+			{
+				"id": "requested",
+				"type": "date",
+				"listDisplay": "hidden lg:table-cell",
+				"displayName": "Fecha de solicitud"
+			},
+			{
+				"id": "relatedOrder",
+				"displayName": "Pedido original"
+			}
+			
+		]
+}

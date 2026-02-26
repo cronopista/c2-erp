@@ -1,0 +1,27 @@
+{
+	"id": "admin-all-sites",
+	"displayName": "Obras",
+	"readAccess": "all",
+	"identifier": "name",
+	"table": "c2_sites",
+	"sql": "active = true",
+	"pageSize": -1,
+	"fields": [
+		{
+			"id": "id",
+			"displayName": "Id",
+			"readOnly": true
+		},
+		{
+			"id": "name",
+			"searchable": true
+		},
+		{
+			"id": "active",
+			"displayName": "Activa",
+			"type": "bool",
+			"searchable": true
+			
+		}
+	]
+}

@@ -1,0 +1,181 @@
+{
+	"id": "materials-orders-processing-write",
+	"displayName": "Pedido",
+	"readAccess": "materiales.order.processing.write",
+	"writeAccess": "materiales.order.processing.write",
+	"table": "c2_materials_orders",
+	"orderBy": "state='PENDING' DESC, state='PREPARED' DESC, state='SENT' DESC, state='REQUESTED' DESC, urgent DESC, requested",
+	"identifier": "id",
+		"fields": [
+			{
+				"id": "id",
+				"displayName": "Nº de pedido",
+				"searchable": true
+			},
+			{
+				"id": "state",
+				"displayName": "Estado",
+				"values":{
+					"STARTED": "Empezado",
+					"PENDING": "Pendiente",
+					"PREPARED": "Preparado",
+					"SENT": "Enviado",
+					"REQUESTED": "Pedido a proveedor",
+					"REASSIGNED": "Reasignado a otro pedido",
+					"RECIEVED": "Recibido"
+				}
+			},
+			{
+				"id": "urgent",
+				"displayName": "Urgente",
+				"type": "bool"
+			},
+			{
+				"id": "site",
+				"type": "reference",
+				"referenceId": "admin-all-sites",
+				"listDisplay": "hidden",
+				"displayName": "Ubicación",
+				"referenceDisplayName": ["name"]
+			},
+			{
+				"id": "siteInfo",
+				"displayName": "Ubicación",
+				"listDisplay": "hidden lg:table-cell",
+				"parentReference": "site",
+				"childReference": "id",
+				"type": "object",
+				"table": "c2_sites",
+				"fields": [
+					{
+						"id": "name"
+					},
+					{
+						"id": "address"
+					},
+					{
+						"id": "city"
+					},
+					{
+						"id": "province"
+					},
+					{
+						"id": "postalCode"
+					}
+				]
+			},
+			{
+				"id": "user",
+				"type": "reference",
+				"referenceId": "users-reference",
+				"listDisplay": "hidden",
+				"displayName": "Pedido por",
+				"referenceDisplayName": ["name", "lastname"]
+			},
+			{
+				"id": "userInfo",
+				"displayName": "Pedido por",
+				"listDisplay": "hidden lg:table-cell",
+				"parentReference": "user",
+				"childReference": "id",
+				"type": "object",
+				"table": "c2_user",
+				"fields": [
+					{
+						"id": "name"
+					},
+					{
+						"id": "lastname"
+					}
+				]
+			},
+			{
+				"id": "lines",
+				"type": "list",
+				"listDisplay": "hidden",
+				"displayName": "Líneas",
+				"table": "c2_materials_orders_lines",
+				"parentReference": "id",
+				"childReference": "parent",
+				"fields": [
+					{
+						"id": "id",
+						"displayName": "Id"
+					},
+					{
+						"id": "parent",
+						"formDisplay":"hidden"
+					},
+					{
+						"id": "material",
+						"type": "reference",
+						"referenceId": "materials-materials",
+						"displayName": "Material",
+						"required": true
+					},
+					{
+						"id": "materialInfo",
+						"parentReference": "material",
+						"childReference": "id",
+						"type": "object",
+						"table": "c2_materials_materials",
+						"fields": [
+							{
+								"id": "name"
+							},
+							{
+								"id": "description"
+							},						
+							{
+								"id": "photo"
+							},
+							{
+								"id": "cost",
+								"type": "number"
+							},
+							{
+								"id": "location"
+							}
+						]
+					},
+					{
+						"id": "quantity",
+						"type": "number",
+						"displayName": "Cantidad",
+						"required": true
+					},
+					{
+						"id": "urgent",
+						"displayName": "Urgente",
+						"type" : "bool"
+					},
+					{
+						"id": "state",
+						"displayName": "Estado",
+						"values":{
+							"STARTED": "Empezado",
+							"PREPARED": "Preparado",
+							"POSTPONED": "Postpuesto",
+							"REQUESTED": "Pedido a proveedor"
+						}
+						
+					},
+					{
+						"id": "uuid"
+					
+					}
+				]
+			},
+			{
+				"id": "requested",
+				"type": "date",
+				"listDisplay": "hidden lg:table-cell",
+				"displayName": "Fecha de solicitud"
+			},
+			{
+				"id": "relatedOrder",
+				"searchable": true
+			}
+			
+		]
+}

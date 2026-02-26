@@ -1,0 +1,63 @@
+{
+	"id": "admin-sites",
+	"displayName": "Ubicación",
+	"readAccess": "admin.sites.read",
+	"writeAccess": "admin.sites.write",
+	"identifier": "name",
+	"table": "c2_sites",
+	"fields": [
+		{
+			"id": "id",
+			"displayName": "Id",
+			"listDisplay": "hidden lg:table-cell",
+			"readOnly": true
+		},
+		{
+			"id": "name",
+			"displayName": "Nombre",
+			"searchable": true,
+			"required": true,
+			"maxLength": 256
+		},
+		{
+			"id": "active",
+			"displayName": "Activa",
+			"type": "bool",
+			"searchable": true
+			
+		},
+		{
+			"id": "address",
+			"displayName": "Dirección",
+			"listDisplay": "hidden lg:table-cell",
+			"searchable": true,
+			"required": true,
+			"maxLength": 512
+		},
+		{
+			"id": "city",
+			"displayName": "Población",
+			"searchable": true,
+			"required": true,
+			"maxLength": 128
+		},
+		{
+			"id": "province",
+			"displayName": "Provincia",
+			"listDisplay": "hidden lg:table-cell",
+			"required": true,
+			"maxLength": 128
+		},
+		{
+			"id": "postalCode",
+			"displayName": "Código postal",
+			"listDisplay": "hidden",
+			"type": "number",
+			"required": true,
+			"maxLength": 32
+		}
+		
+		
+		
+	]
+}

@@ -1,0 +1,59 @@
+{
+	"id": "webmaster-roles",
+	"writeAccess": "webmaster.roles.write",
+	"table": "c2_roles",
+	"displayName": "Rol",
+	"identifier": "name",
+	"fields": [
+		{
+			"id": "id",
+			"listDisplay": "hidden",
+			"displayName": "Id",
+			"readOnly": true
+		},
+		{
+			"id": "name",
+			"displayName": "Nombre",
+			"searchable": true,
+			"required": true,
+			"maxLength": 128
+		},
+		{
+			//from role_x_permission where roleId = parent.id
+			"id": "permissions",
+			"displayName": "Permisos",
+			"type": "list",
+			"listDisplay": "hidden",
+			"parentReference": "id",
+			"childReference": "roleId",
+			"table": "c2_role_x_permission", 
+			"fields": [
+				{
+					"id": "id"
+				},
+				{
+					"id": "roleId",
+					"formDisplay":"hidden"
+				},
+				{
+					"id": "permissionId",
+					"displayName": "Permiso",
+					"values":{
+						"webmaster.roles.write":"Webmaster -> Roles",
+						"webmaster.users.write":"Webmaster -> Usuarios",
+						"admin.sites.write": "Administración -> Ubicaciones",
+						"materiales.admin.write": "Materiales -> Categorías y catálogo",
+						"materiales.shop.write": "Materiales -> Tienda y mis pedidos",
+						"materiales.order.processing.write": "Materiales -> Procesamiento de pedidos",
+						"materiales.approve.write": "Materiales -> Aprobar materiales",
+						"materiales.orders.admin.write": "Materiales -> Administración de pedidos"
+					}
+				}
+					
+			]	
+		}
+	]
+}
+
+
+

@@ -1,0 +1,22 @@
+{
+	"id": "file-uploads",
+	"table": "c2_files",
+	"displayName": "Archivos subidos",
+	"fields": [
+		{
+			"id": "id"
+		},
+		{
+			"id": "path"
+		},
+		{
+			"id": "name"
+		},
+		{
+			"id": "view"
+		}
+	]
+}
+
+
+

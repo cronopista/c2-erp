@@ -1,0 +1,54 @@
+{
+	"id": "materials-shop-categories",
+	"table": "c2_materials_categories",
+	"displayName": "Categoría",
+	"readAccess": "materiales.shop.write",
+	"writeAccess": "none",
+	"identifier": "name",
+	"pageSize": -1,
+	"fields": [
+		{
+			"id": "id",
+			"displayName": "Id",
+			"listDisplay": "hidden",
+			"readOnly": true
+		},
+		{
+			"id": "name",
+			"displayName": "Nombre",
+			"searchable": true,
+			"required": true,
+			"maxLength": 128
+		},
+		{
+			"id": "subcategories",
+			"displayName": "Subcategorías",
+			"listDisplay": "hidden" ,
+			"type": "list",
+			"parentReference": "id",
+			"childReference": "category",
+			"table": "c2_materials_subcategories",
+			"primary": "name",
+			"fields": [
+				{
+					"id": "id",
+					"displayName": "Id"
+				},
+				{
+					"id": "name",
+					"displayName": "Nombre",
+					"required": true,
+					"maxLength": 128
+				},
+				{
+					"id": "category",
+					"displayName": "Categoría",
+					"formDisplay":"hidden"
+				}
+			]
+		}
+	]
+}
+
+
+

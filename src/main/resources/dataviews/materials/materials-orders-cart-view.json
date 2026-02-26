@@ -1,0 +1,100 @@
+{
+	//Usado para crear ordenes desde la tienda
+	"id": "materials-orders-cart",
+	"displayName": "Carrito",
+	"readAccess": "materiales.shop.write",
+	"writeAccess": "materiales.shop.write",
+	"parentReference": "$.userId",
+	"childReference": "user",
+	"table": "c2_materials_orders",
+	"identifier": "id",
+	"fields": [
+		{
+			"id": "id"
+		},
+		{
+			"id": "state",
+			"searchable": true
+		},
+		{
+			"id": "urgent",
+			"type": "bool"
+		},
+		{
+			"id": "site",
+			"type": "reference",
+			"referenceId": "admin-sites"
+		},
+		{
+			"id": "user",
+			"type": "reference",
+			"referenceId": "users-reference"
+		},
+		{
+			"id": "cost",
+			"type": "number"
+		},
+		{
+			"id": "requested",
+			"type": "date"
+		},
+		{
+			"id": "lines",
+			"type": "list",
+			"table": "c2_materials_orders_lines",
+			"parentReference": "id",
+			"childReference": "parent",
+			"fields": [
+				{
+					"id": "id"
+				},
+				{
+					"id": "parent"
+				},
+				{
+					"id": "material",
+					"type": "reference",
+					"referenceId": "materials-materials"
+				},
+				{
+					"id": "materialInfo",
+					"parentReference": "material",
+					"childReference": "id",
+					"type": "object",
+					"table": "c2_materials_materials",
+					"fields": [
+						{
+							"id": "name"
+						},
+						{
+							"id": "description"
+						},						
+						{
+							"id": "photo"
+						},
+						{
+							"id": "cost",
+							"type": "number"
+						}
+					]
+				},
+				{
+					"id": "quantity",
+					"type": "number"
+				},
+				{
+					"id": "urgent",
+					"type": "bool"
+				},
+				{
+					"id": "state"
+				},
+				{
+					"id": "uuid"
+				
+				}
+			]
+		}
+		
+	]
+}

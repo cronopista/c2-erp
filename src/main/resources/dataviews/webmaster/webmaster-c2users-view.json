@@ -1,0 +1,76 @@
+{
+	"id": "webmaster-c2users",
+	"table": "c2_user",
+	"presaveListener": "userPresaveListener",
+	"writeAccess": "webmaster.users.write",
+	"displayName": "Usuarios",
+	"identifier": "name",
+	"orderBy": "active, login",
+	"customForm": "C2Password",
+	"fields": [
+		{
+			"id": "id",
+			"listDisplay": "hidden"
+		},
+		{
+			"id": "name",
+			"displayName": "Nombre",
+			"searchable": true,
+			"required": true,
+			"maxLength": 128
+		},
+		{
+			"id": "lastname",
+			"displayName": "Apellidos",
+			"searchable": true,
+			"required": true,
+			"maxLength": 256
+		},
+		{
+			"id": "login",
+			"displayName": "Login",
+			"searchable": true,
+			"required": true,
+			"maxLength": 32
+		},
+		{
+			"id": "active",
+			"displayName": "Activo",
+			"type": "bool"
+		},
+		{
+			"id": "role",
+			"displayName": "Rol",
+			"type": "reference",
+			"listDisplay": "hidden",
+			"referenceId": "webmaster-roles-reference",
+			"referenceDisplayName": ["name"]
+		},
+		{
+			"id": "homepage",
+			"displayName": "Página de inicio",
+			"listDisplay": "hidden lg:table-cell",
+			"values":{
+				"materials-shop": "Materiales -> Tienda",
+				"dg/materials-orders-mine": "Materiales -> Mis pedidos",
+				"dg/webmaster-roles": "Webmaster -> Roles",
+				"dg/webmaster-c2users": "Webmaster -> Usuarios",
+				"dg/admin-sites": "Administración -> Ubicaciones",
+				"dg/materials-categories": "Materiales -> Categorías",
+				"dg/materials-materials": "Materiales -> Catálogo de materiales",
+				"dg/materials-approve": "Materiales -> Aprobar materiales",
+				"dg/materials-orders-processing": "Materiales -> Procesamiento de pedidos",
+				"dg/materials-orders-all": "Materiales -> Administración de pedidos"
+			}
+		},
+		{
+			"id": "password",
+			"listDisplay": "hidden",
+			"formDisplay": "hidden"
+		}
+		
+	]
+}
+
+
+

@@ -1,0 +1,123 @@
+{
+	"id": "materials-orders-mine",
+	"displayName": "Pedido",
+	"readAccess": "materiales.shop.write",
+	"writeAccess": "none",
+	"parentReference": "$.userId",
+	"childReference": "user",
+	"table": "c2_materials_orders",
+	"identifier": "id",
+	"sql": "state != 'STARTED' && state != 'REASSIGNED' && state != 'RECIEVED'",
+	"customForm": "MyOrdersChangeStateForm",
+	"orderBy": "state='PENDING' DESC, state='PREPARED' DESC, state='SENT' DESC, state='REQUESTED' DESC, urgent DESC, requested",
+	"fields": [
+			{
+				"id": "id",
+				"displayName": "Nº de pedido",
+				"searchable": true
+			},
+			{
+				"id": "state",
+				"displayName": "Estado",
+				"values":{
+					"STARTED": "Empezado",
+					"PENDING": "Pendiente",
+					"PREPARED": "Preparado",
+					"SENT": "Enviado",
+					"REQUESTED": "Pedido a proveedor",
+					"REASSIGNED": "Reasignado a otro pedido",
+					"RECIEVED": "Recibido"
+				}
+			},
+			{
+				"id": "urgent",
+				"displayName": "Urgente",
+				"type": "bool"
+			},
+			{
+				"id": "site",
+				"type": "reference",
+				"referenceId": "admin-all-sites",
+				"listDisplay": "hidden",
+				"displayName": "Ubicación"
+			},
+			{
+				"id": "siteInfo",
+				"displayName": "Ubicación",
+				"listDisplay": "hidden lg:table-cell",
+				"parentReference": "site",
+				"childReference": "id",
+				"type": "object",
+				"table": "c2_sites",
+				"fields": [
+					{
+						"id": "name"
+					}
+				]
+			},
+			{
+				"id": "requested",
+				"type": "date",
+				"listDisplay": "hidden lg:table-cell",
+				"displayName": "Fecha de solicitud"
+			},
+			{
+				"id": "relatedOrder",
+				"displayName": "Pedido original",
+				"searchable": true
+			},
+			{
+				"id": "lines",
+				"type": "list",
+				"listDisplay": "hidden",
+				"displayName": "Líneas",
+				"table": "c2_materials_orders_lines",
+				"parentReference": "id",
+				"childReference": "parent",
+				"fields": [
+					{
+						"id": "id",
+						"displayName": "Id"
+					},
+					{
+						"id": "parent",
+						"formDisplay":"hidden"
+					},
+					{
+						"id": "material",
+						"type": "reference",
+						"referenceId": "materials-shop",
+						"displayName": "Material",
+						"required": true
+					},
+					{
+						"id": "quantity",
+						"type": "number",
+						"displayName": "Cantidad",
+						"required": true
+					},
+					
+					{
+						"id": "state",
+						"displayName": "Estado",
+						"values":{
+							"STARTED": "Empezado",
+							"PREPARED": "Preparado",
+							"POSTPONED": "Postpuesto",
+							"REQUESTED": "Pedido a proveedor"
+						}
+						
+					},
+					{
+						"id": "urgent",
+						"displayName": "Urgente",
+						"type" : "bool"
+					}
+				]
+			}
+			
+		]
+		
+	
+	
+}

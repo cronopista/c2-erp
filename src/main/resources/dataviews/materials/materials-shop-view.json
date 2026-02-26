@@ -1,0 +1,80 @@
+{
+	"id": "materials-shop",
+	"table": "c2_materials_materials",
+	"displayName": "Material",
+	"readAccess": "materiales.shop.write",
+	"writeAccess": "none",
+	"identifier": "name",
+	"sql": "approved = true",
+	"fields": [
+		{
+			"id": "id",
+			"listDisplay": "hidden" ,
+			"displayName": "Id",
+			"readOnly": true
+		},
+		{
+			"id": "name",
+			"searchable": true,
+			"displayName": "Nombre"
+		},
+		{
+			"id": "aliases",
+			"searchable": true,
+			"listDisplay": "hidden lg:table-cell",
+			"displayName": "Alias" 
+		},
+		{
+			"id": "description",
+			"searchable": true,
+			"listDisplay": "hidden lg:table-cell",
+			"displayName": "Descripción" 
+		},
+		{
+			"id": "location",
+			"listDisplay": "hidden lg:table-cell" ,
+			"displayName": "Ubicación"
+		},
+		{
+			"id": "cost",
+			"type": "number",
+			"listDisplay": "hidden lg:table-cell",
+			"displayName": "Coste"
+		},
+		{
+			"id": "category",
+			"type": "reference",
+			"referenceId": "materials-categories",
+			"listDisplay": "hidden",
+			"displayName": "Categoría"
+		},
+		{
+			"id": "subcategory",
+			"type": "reference"	,
+			"referenceId": "materials-subcategories",
+			"listDisplay": "hidden",
+			"displayName": "Subcategoría",
+			"required":true,
+			"parentReference": "category",
+			"childReference": "category",
+			"searchable": true
+		},
+		{
+			"id": "approved",
+			"displayName": "Aprovado",
+			"searchable": true,
+			"type": "bool"
+		},
+		{
+			"id": "photo",
+			"type": "file",
+			"listDisplay": "hidden",
+			"displayName": "Fotografía",
+			"acceptedTypes": ".webp, .jpg, .png, .svg, .gif"
+		}
+		
+	]
+}
+
+
+

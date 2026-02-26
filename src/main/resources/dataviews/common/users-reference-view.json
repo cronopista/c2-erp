@@ -1,0 +1,26 @@
+{
+	"id": "users-reference",
+	"table": "c2_user",
+	"displayName": "Usuarios",
+	"readAccess": "all",
+	"writeAccess": "none",
+	"identifier": "name",
+	"sql": "active = true",
+	"fields": [
+		{
+			"id": "id"
+		},
+		{
+			"id": "name",
+			"searchable": true
+		},
+		{
+			"id": "lastname",
+			"searchable": true
+		}
+		
+	]
+}
+
+
+

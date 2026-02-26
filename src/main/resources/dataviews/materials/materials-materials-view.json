@@ -1,0 +1,118 @@
+{
+	"id": "materials-materials",
+	"table": "c2_materials_materials",
+	"displayName": "Material",
+	"readAccess": "materiales.admin.read",
+	"writeAccess": "materiales.admin.write",
+	"identifier": "name",
+	"fields": [
+		{
+			"id": "id",
+			"listDisplay": "hidden" ,
+			"displayName": "Id",
+			"readOnly": true
+		},
+		{
+			"id": "name",
+			"searchable": true,
+			"displayName": "Nombre",
+			"required": true,
+			"maxLength": 256
+		},
+		{
+			"id": "aliases",
+			"searchable": true,
+			"listDisplay": "hidden lg:table-cell",
+			"displayName": "Alias",
+			"maxLength": 516
+		},
+		{
+			"id": "description",
+			"searchable": true,
+			"listDisplay": "hidden lg:table-cell",
+			"displayName": "Descripción",
+			"maxLength": 512 
+		},
+		{
+			"id": "location",
+			"listDisplay": "hidden lg:table-cell" ,
+			"displayName": "Ubicación",
+			"required": true,
+			"maxLength": 128
+		},
+		{
+			"id": "cost",
+			"type": "number",
+			"listDisplay": "hidden lg:table-cell",
+			"displayName": "Coste",
+			"required": true
+		},
+		{
+			"id": "photo",
+			"type": "file",
+			"listDisplay": "hidden",
+			"displayName": "Fotografía",
+			"acceptedTypes": ".webp, .jpg, .png, .svg, .gif"
+		},
+		{
+			"id": "category",
+			"type": "reference",
+			"referenceId": "materials-categories",
+			"listDisplay": "hidden",
+			"displayName": "Categoría",
+			"required":true
+		},
+		{
+			"id": "categoryInfo",
+			"displayName": "Categoría",
+			"listDisplay": "hidden lg:table-cell",
+			"parentReference": "category",
+			"childReference": "id",
+			"type": "object",
+			"readOnly": true,
+			"table": "c2_materials_categories",
+			"fields": [
+				{
+					"id": "name"
+				}
+			]
+		},
+		{
+			"id": "subcategory",
+			"type": "reference"	,
+			"referenceId": "materials-subcategories",
+			"listDisplay": "hidden",
+			"displayName": "Subcategoría",
+			"required":true,
+			"parentReference": "category",
+			"childReference": "category"
+		},
+		{
+			"id": "subcategoryInfo",
+			"displayName": "Subcategoría",
+			"listDisplay": "hidden lg:table-cell",
+			"parentReference": "subcategory",
+			"childReference": "id",
+			"type": "object",
+			"readOnly": true,
+			"table": "c2_materials_subcategories",
+			"fields": [
+				{
+					"id": "name"
+				}
+			]
+		},
+		{
+			"id": "approved",
+			"displayName": "Aprobado",
+			"type": "bool",
+			"defaultValue": false,
+			"formDisplay":"hidden"
+		}
+		
+		
+	]
+}
+
+
+

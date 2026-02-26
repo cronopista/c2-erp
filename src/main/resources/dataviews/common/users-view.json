@@ -1,0 +1,70 @@
+{
+	"id": "users",
+	"table": "c2_user",
+	"displayName": "Usuario",
+	"sql": "active = true",
+	"fields": [
+		{
+			"id": "id"
+		},
+		{
+			"id": "name"
+		},
+		{
+			"id": "lastname"
+		},
+		{
+			"id": "role"
+		},
+		{
+			"id": "active",
+			"type": "bool"
+		},
+		{
+			"id": "homepage"
+		},
+		{
+			"id": "attempts",
+			"type": "number"
+		},
+		{
+			"id": "nextAttempt",
+			"type": "date"
+		},
+		{
+			"id": "roleInfo",
+			//from role where id = parent.role
+			"parentReference": "role",
+			"childReference": "id",
+			"type": "object",
+			"table": "c2_roles",
+			"fields": [
+				{
+					"id": "id"
+				},
+				{
+					"id": "name"
+				},
+				{
+					//from role_x_permission where roleId = parent.id
+					"id": "permissions",
+					"type": "list",
+					"parentReference": "id",
+					"childReference": "roleId",
+					"table": "c2_role_x_permission", 
+					"fields": [
+						{
+							"id": "permissionId"
+							
+						}
+							
+					]	
+				}
+			]
+		}
+		
+	]
+}
+
+
+
