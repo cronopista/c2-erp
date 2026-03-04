@@ -9,6 +9,7 @@
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
 	<artifactId>c2-erp</artifactId>
+	<packaging>war</packaging>
 
 	<dependencies>
 		<dependency>
@@ -20,10 +21,12 @@
 		    <groupId>org.springframework.boot</groupId>
 		    <artifactId>spring-boot-starter-actuator</artifactId>
 		</dependency>
+		
 
 	</dependencies>
 	
 	<build>
+		<finalName>${artifactId}</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>

@@ -43,7 +43,7 @@ public class FileUploadController {
 
 	private static final Logger log = LoggerFactory.getLogger(FileUploadController.class);
 
-	@Value("${file.upload.path:/erp/uploads}")
+	@Value("${file.upload.path:/mounts/uploads}")
 	private String baseFilePath;
 
 	private Path rootLocation;
@@ -54,10 +54,10 @@ public class FileUploadController {
 	@PostConstruct
 	public void init() throws IOException {
 		rootLocation = Paths.get(baseFilePath);
-//		File file = rootLocation.toFile();
-//		if (!file.exists()) {
-//			Files.createDirectories(rootLocation);
-//		}
+		File file = rootLocation.toFile();
+		if (!file.exists()) {
+			Files.createDirectories(rootLocation);
+		}
 	}
 
 	@PostMapping("/{view}/upload")
